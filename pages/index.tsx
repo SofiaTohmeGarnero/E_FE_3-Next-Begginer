@@ -1,9 +1,7 @@
 import type { GetStaticProps, NextPage, GetServerSideProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
 import styles from "../styles/Home.module.css";
-import ICharacter from "../types/ICharacter";
 
 interface Props {
   users: any;
@@ -28,7 +26,7 @@ const Home: NextPage<Props> = ({ users }) => {
           return (
             <li key={`${user.id.value}-${user.login.username}`}>
               <img src={user.picture.thumbnail} alt="profile" />
-              {/* <Image src={user.picture.thumbnail} alt="profile" width={100} height={100}/> */}
+              <Image src={user.picture.thumbnail} alt="profile" width={48} height={48}/>
               <span>
                 {user.name.first} {user.name.first}
               </span>
@@ -54,33 +52,3 @@ export const getServerSideProps: GetServerSideProps = async () => {
   };
 };
 
-/* interface Props {
-  characters: ICharacter[];
-}
-const Home: NextPage<Props> = ({ characters }) => {
-  return (
-    <div className={styles.container}>
-      <h1>Rick and Morty Characters</h1>
-      <ul>
-        {characters?.map((character: ICharacter) => {
-          return <li key={character.id}><Link href={`/character/${character.id}`}>{character.name}</Link></li>;
-        })}
-      </ul>
-    </div>
-  );
-};
-
-export const getStaticProps: GetStaticProps = async () => {
-  const url = "https://rickandmortyapi.com/api/character";
-  const response = await fetch(url);
-  const data = await response.json();
-
-  return {
-    props: {
-      characters: data.results,
-    },
-  };
-} 
-
-export default Home;
-*/

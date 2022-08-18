@@ -23,7 +23,7 @@ const Character = () => {
       </Head>
       <p>{character?.name}</p>
       <img src={character?.image} alt="avatar" />
-      {/* <Image src={`${character?.image}`} alt='imagen' width={100} height={100}/> */}
+      {character?.image && <Image src={character?.image} alt='imagen' width={300} height={300}/>}
     </div>
   );
 };
