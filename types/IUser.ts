@@ -1,5 +1,6 @@
 export default interface IUser {
     id: string;
-    name: string;
+    mail: string;
+    password: string;
     role: "user" | "admin";
 }
